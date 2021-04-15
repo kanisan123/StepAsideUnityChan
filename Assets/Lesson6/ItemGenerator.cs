@@ -18,10 +18,12 @@ public class ItemGenerator : MonoBehaviour
     private float posRange = 3.4f;
     //ユニティちゃん
     private GameObject unitychan;
-    //アイテム生成位置の生成開始位置からのオフセット
-    private float spawnZOffset = 70;
-    //アイテム生成開始位置
+    //アイテム生成位置の生成トリガー位置からのオフセット
+    private float spawnZOffset = 60;
+    //アイテム生成トリガー位置
     private float nextSpawnTriggerPos;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,7 @@ public class ItemGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (unitychan.transform.position.z > nextSpawnTriggerPos && unitychan.transform.position.z < goalPos - spawnZOffset)
+        if (unitychan.transform.position.z >= nextSpawnTriggerPos && unitychan.transform.position.z < goalPos - spawnZOffset)
         {
             GenerateItem(nextSpawnTriggerPos + spawnZOffset);
             nextSpawnTriggerPos += 15;
